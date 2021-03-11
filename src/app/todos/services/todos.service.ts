@@ -2,22 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Album } from '../interfaces/albums.interface';
+import { Todo } from '../interfaces/todos.interface';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlbumsService {
+export class TodosService {
 
   private baseUrl: string = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
-  getAlbums(page: number): Observable<Album[]>{
-    return this.http.get<Album[]>(`${this.baseUrl}/albums?_page=${page}`);
+  getTodos(page: number): Observable<Todo[]>{
+    return this.http.get<Todo[]>(`${this.baseUrl}/todos?_page=${page}`);
   }
 
-  getAlbumById(id: string): Observable<Album>{
-    return this.http.get<Album>(`${this.baseUrl}/albums/${id}`);
+  getTodoById(id: string): Observable<Todo>{
+    return this.http.get<Todo>(`${this.baseUrl}/todos/${id}`);
   }
 }

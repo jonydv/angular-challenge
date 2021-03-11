@@ -54,7 +54,12 @@
       <tr *ngFor="let t of todos">
         <th scope="row">{{ t.id }}</th>
         <th scope="row">{{ t.userId }}</th>
-        <td>{{ t.completed }}</td>
+        <td>{{ t.title }}</td>
+        <td>
+          <div class="form-switch">
+            <input class="form-check-input" type="checkbox" />
+          </div>
+        </td>
         <td>
           <button
             class="btn btn-outline-primary"
