@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../../interfaces/users.interface';
 import { UsersService } from '../../services/users.service';
+import { Post } from '../../../posts/interfaces/posts.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
@@ -12,6 +14,8 @@ import { UsersService } from '../../services/users.service';
 export class UserDetailsComponent implements OnInit {
   
   @Input()user!: User;
+  posts: Post[] = [];
+  tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
 
   constructor(private usersService: UsersService,
               private activatedRoute: ActivatedRoute,
@@ -27,6 +31,13 @@ export class UserDetailsComponent implements OnInit {
 
   goBack(){
     this.router.navigate(['/']);
+  }
+
+  getAllUserPosts(id: string):void{
+    
+   this.usersService.getUserPosts(id)
+      .subscribe(posts => this.posts = posts);
+      
   }
 
 }

@@ -16,7 +16,6 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     SharedModule
   ],
   exports: [
-    UserDetailsComponent,
     UserCardComponent
   ]
 })

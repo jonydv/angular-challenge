@@ -12,12 +12,19 @@ import { Todo } from '../../../todos/interfaces/todos.interface';
 })
 export class TableComponent implements OnInit {
 
-  @Input() tableHeads!: string[];
   @Input()users!: User[];
   @Input()posts!: Post[];
   @Input()albums!: Album[];
   @Input()todos!: Todo[];
+
+  usersTableHeads: string[]= ['Id', 'Nombre', 'Username', 'Ver'];
+  postsTableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
+  albumsTableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
+  todosTableHeads: string[]= ['Id', 'UserId', 'Title', 'Hecho', 'Ver'];
+
+
   constructor() { }
+
 
   ngOnInit(): void {
   }

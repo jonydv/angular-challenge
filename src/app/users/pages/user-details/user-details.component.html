@@ -1,31 +1,26 @@
-<div class="container">
-  <div class="text-center" *ngIf="!user">
+<div class="container" *ngIf="!user; else divElse">
+  <div class="text-center">
     <div class="spinner-border text-center" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
 </div>
-<app-user-card [user]="user"></app-user-card>
-<a href="#" class="btn btn-primary m-2"><i class="far fa-eye"></i> Posts</a>
-<a href="#" class="btn btn-primary m-2"><i class="far fa-eye"></i> Albums</a>
-<a href="#" class="btn btn-primary m-2"><i class="far fa-eye"></i> Todos</a>
-<div class="container-fluid mt-4">
-  <div class="card" *ngIf="user">
-    <div class="card-body">
-      <h5 class="card-title">{{ user.name | titlecase }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{ user.website }}</h6>
-      <p class="card-text">{{ user.company.name }}</p>
-      <p class="card-text">{{ user.company.bs }}</p>
-      <p class="card-text">{{ user.company.catchPhrase }}</p>
-      <a href="#" class="btn btn-primary m-2"
-        ><i class="far fa-eye"></i> Posts</a
-      >
-      <a href="#" class="btn btn-primary m-2"
-        ><i class="far fa-eye"></i> Albums</a
-      >
-      <a href="#" class="btn btn-primary m-2"
-        ><i class="far fa-eye"></i> Todos</a
-      >
-    </div>
-  </div>
-</div>
+<ng-template #divElse>
+  <app-user-card [user]="user"></app-user-card>
+  <button
+    class="btn btn-outline-info m-2"
+    (click)="getAllUserPosts(user.id.toString())"
+  >
+    <i class="far fa-clipboard"></i> Posts
+  </button>
+  <a href="#" class="btn btn-outline-warning m-2"
+    ><i class="far fa-eye"></i> Albums</a
+  >
+  <a href="#" class="btn btn-outline-primary m-2"
+    ><i class="far fa-eye"></i> Todos</a
+  >
+
+  <ng-template *ngIf="!(posts.length > 0)">
+    <app-table [posts]="posts"></app-table>
+  </ng-template>
+</ng-template>
