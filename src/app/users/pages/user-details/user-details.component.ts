@@ -4,7 +4,8 @@ import { switchMap } from 'rxjs/operators';
 import { User } from '../../interfaces/users.interface';
 import { UsersService } from '../../services/users.service';
 import { Post } from '../../../posts/interfaces/posts.interface';
-import { Observable } from 'rxjs';
+import { Album } from '../../../albums/interfaces/albums.interface';
+import { Todo } from '../../../todos/interfaces/todos.interface';
 
 @Component({
   selector: 'app-user-details',
@@ -14,7 +15,10 @@ import { Observable } from 'rxjs';
 export class UserDetailsComponent implements OnInit {
   
   @Input()user!: User;
-  posts: Post[] = [];
+  posts!: Post[];
+  albums!: Album[];
+  todos!:Todo[];
+  
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
 
   constructor(private usersService: UsersService,
@@ -33,11 +37,11 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  getAllUserPosts(id: string):void{
+  getAllUserPosts (id: string):void{
     
    this.usersService.getUserPosts(id)
       .subscribe(posts => this.posts = posts);
-      
+         
   }
 
 }

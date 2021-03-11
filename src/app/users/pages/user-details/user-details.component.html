@@ -20,7 +20,5 @@
     ><i class="far fa-eye"></i> Todos</a
   >
 
-  <ng-template *ngIf="!(posts.length > 0)">
-    <app-table [posts]="posts"></app-table>
-  </ng-template>
+  <app-table *ngIf="posts" [posts]="posts"></app-table>
 </ng-template>
