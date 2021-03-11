@@ -19,4 +19,8 @@ export class PostsService {
   getPostById(id: string): Observable<Post>{
     return this.http.get<Post>(`${this.baseUrl}/posts/${id}`);
   }
+
+  getPostUserAndComments(id: string): Observable<Post>{
+    return this.http.get<Post>(`${this.baseUrl}/posts/${id}?_expand=user&_embed=comments`);
+  }
 }

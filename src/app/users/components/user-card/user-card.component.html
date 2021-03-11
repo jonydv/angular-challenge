@@ -1,0 +1,9 @@
+<div class="card" *ngIf="user">
+  <div class="card-body">
+    <h5 class="card-title">{{ user.name | titlecase }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ user.website }}</h6>
+    <p class="card-text">{{ user.company.name }}</p>
+    <p class="card-text">{{ user.company.bs }}</p>
+    <p class="card-text">{{ user.company.catchPhrase }}</p>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostListComponent } from './pages/post-list/post-list.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { UsersModule } from '../users/users.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     PostsRoutingModule,
-    SharedModule
+    SharedModule,
+    UsersModule
   ]
 })
 export class PostsModule { }

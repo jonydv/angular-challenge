@@ -11,7 +11,7 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserDetailsComponent implements OnInit {
   
-  user!: User;
+  @Input()user!: User;
 
   constructor(private usersService: UsersService,
               private activatedRoute: ActivatedRoute,
