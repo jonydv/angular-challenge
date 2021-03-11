@@ -1,0 +1,69 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let head of tableHeads" scope="col">{{ head }}</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="users">
+      <tr *ngFor="let u of users">
+        <th scope="row">{{ u.id }}</th>
+        <td>{{ u.name }}</td>
+        <td>{{ u.username }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['/users', u.id]"
+          >
+            Ver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="posts">
+      <tr *ngFor="let p of posts">
+        <th scope="row">{{ p.id }}</th>
+        <th scope="row">{{ p.userId }}</th>
+        <td>{{ p.title }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['/posts', p.id]"
+          >
+            Ver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="albums">
+      <tr *ngFor="let a of albums">
+        <th scope="row">{{ a.id }}</th>
+        <th scope="row">{{ a.userId }}</th>
+        <td>{{ a.title }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['/albums', a.id]"
+          >
+            Ver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="todos">
+      <tr *ngFor="let t of todos">
+        <th scope="row">{{ t.id }}</th>
+        <th scope="row">{{ t.userId }}</th>
+        <td>{{ t.completed }}</td>
+        <td>
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['/todos', t.id]"
+          >
+            Ver
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
