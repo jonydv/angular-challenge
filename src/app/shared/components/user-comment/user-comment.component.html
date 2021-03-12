@@ -1,0 +1,11 @@
+<h3>Comentarios:</h3>
+<hr />
+<div class="card m-4" *ngFor="let comment of comments">
+  <div class="card-header">
+    <h5 class="card-title">Nombre: {{ comment.name }}</h5>
+    <p class="card-subtitle">Email: {{ comment.email }}</p>
+  </div>
+  <div class="card-body">
+    {{ comment.body }}
+  </div>
+</div>

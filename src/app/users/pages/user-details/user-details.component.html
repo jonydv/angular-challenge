@@ -1,0 +1,32 @@
+<div class="container" *ngIf="!user; else divElse">
+  <div class="text-center">
+    <div class="spinner-border text-center" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+<ng-template #divElse>
+  <app-user-card [user]="user"></app-user-card>
+  <button
+    class="btn btn-outline-info m-2"
+    (click)="getAllUserPosts(user.id.toString())"
+  >
+    <i class="far fa-clipboard"></i> Posts
+  </button>
+  <button
+    class="btn btn-outline-warning m-2"
+    (click)="getAllUserAlbums(user.id.toString())"
+  >
+    <i class="far fa-eye"></i> Albums
+  </button>
+  <button
+    class="btn btn-outline-primary m-2"
+    (click)="getAllUserTodos(user.id.toString())"
+  >
+    <i class="far fa-eye"></i> Todos
+  </button>
+
+  <app-table *ngIf="posts && showPosts" [posts]="posts"></app-table>
+  <app-table *ngIf="albums && showAlbums" [albums]="albums"></app-table>
+  <app-table *ngIf="todos && showTodos" [todos]="todos"></app-table>
+</ng-template>
