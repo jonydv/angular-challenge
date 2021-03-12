@@ -1,3 +1,46 @@
 <h3 class="mt-2">Posts:</h3>
 <hr />
+<div class="col-sm-3">
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      [(ngModel)]="title"
+      placeholder="Titulo del post"
+      (keyup.enter)="filterByTitle()"
+      autocomplete="off"
+    />
+
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      (click)="filterByTitle()"
+    >
+      <i class="fas fa-search"></i>
+      Filtrar
+    </button>
+  </div>
+
+  <div class="input-group mt-2">
+    <input
+      type="number"
+      class="form-control"
+      name="title"
+      [(ngModel)]="userId"
+      placeholder="Id de usuario"
+      (keyup.enter)="filterByUserId()"
+      autocomplete="off"
+    />
+
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      (click)="filterByTitle()"
+    >
+      <i class="fas fa-search"></i>
+      Filtrar
+    </button>
+  </div>
+</div>
 <app-table [posts]="posts"></app-table>

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
 import { TableComponent } from './components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from './components/modal/modal.component';
@@ -14,7 +13,7 @@ import { CompletedPipe } from './pipes/completed.pipe';
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, HomeComponent, TableComponent, ModalComponent, UserCommentComponent, PaginationComponent, CompletedPipe],
+  declarations: [NavbarComponent, FooterComponent, TableComponent, ModalComponent, UserCommentComponent, PaginationComponent, CompletedPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,7 +26,8 @@ import { CompletedPipe } from './pipes/completed.pipe';
     FooterComponent,
     ModalComponent,
     UserCommentComponent,
-    PaginationComponent
+    PaginationComponent,
+    FormsModule
   ]
 })
 export class SharedModule { }

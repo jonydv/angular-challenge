@@ -12,9 +12,13 @@ import { TodosService } from '../../services/todos.service';
 export class TodoListComponent implements OnInit {
   
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Hecho', 'Ver'];
-  todos: Todo[] = []
+  todos: Todo[] = [];
+  completedFilter: boolean = false;
+  order: boolean = false;
 
   constructor(private todosService: TodosService) { }
+
+ 
 
   ngOnInit(): void {
     this.todosService.getTodos(1)
@@ -48,5 +52,20 @@ export class TodoListComponent implements OnInit {
       }
     })
   }
+
+  filterTodosByState():void{
+    this.completedFilter= !this.completedFilter;
+    this.todosService.getTodosFiltered(1, this.completedFilter)
+    .subscribe(todos => this.todos = todos);
+  }
+
+  filterTodosById():void{
+    this.order = !this.order;
+    let filter: string = this.order ? 'asc' : 'desc';
+    this.completedFilter= !this.completedFilter;
+    this.todosService.getTodosFilteredById(1, filter)
+    .subscribe(todos => this.todos = todos);
+  }
+
 
 }

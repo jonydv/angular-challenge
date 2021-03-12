@@ -11,6 +11,8 @@ export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
+  title: string = '';
+  userId!: number;
 
   constructor(private postsService: PostsService) { }
 
@@ -19,4 +21,19 @@ export class PostListComponent implements OnInit {
       .subscribe(posts => this.posts = posts);
   }
 
+  filterByTitle(): void{
+
+    this.postsService.getPostsFiltered(1, this.title)
+      .subscribe(posts => this.posts = posts);
+  }
+
+  filterByUserId(): void{
+    if(!this.userId){
+      return;
+    }
+    
+    this.postsService.getPostsByUserId(this.userId)
+      .subscribe(posts => this.posts = posts);
+
+  }
 }

@@ -16,6 +16,14 @@ export class PostsService {
     return this.http.get<Post[]>(`${this.baseUrl}/posts?_page=${page}&_limit=20`);
   }
 
+  getPostsFiltered(page: number, title: string): Observable<Post[]>{
+    return this.http.get<Post[]>(`${this.baseUrl}/posts?q=${title}&_page=${page}&_limit=20`);
+  }
+
+  getPostsByUserId(id: number): Observable<Post[]>{
+    return this.http.get<Post[]>(`${this.baseUrl}/posts?userId=${id}`);
+  }
+
   getPostById(id: string): Observable<Post>{
     return this.http.get<Post>(`${this.baseUrl}/posts/${id}`);
   }
@@ -23,4 +31,5 @@ export class PostsService {
   getPostUserAndComments(id: string): Observable<Post>{
     return this.http.get<Post>(`${this.baseUrl}/posts/${id}?_expand=user&_embed=comments`);
   }
+
 }
