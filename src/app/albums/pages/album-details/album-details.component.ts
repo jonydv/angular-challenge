@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import {MatDialog} from '@angular/material/dialog';
+
 import { AlbumsService } from '../../services/albums.service';
 import { AlbumPhoto } from '../../interfaces/albumPhoto.interface';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-album-details',
@@ -13,7 +17,8 @@ export class AlbumDetailsComponent implements OnInit {
 
   albumPhotos: AlbumPhoto[] = [];
   constructor(private albumsService: AlbumsService,
-              private activatedRoutes: ActivatedRoute) { }
+              private activatedRoutes: ActivatedRoute,
+              private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.activatedRoutes.params
@@ -24,7 +29,37 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   deletePhoto(id: number):void{
-    this.albumPhotos = this.albumPhotos.filter(p => p.id != id);
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: 'No podrás recuperar la imgen borrada',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.albumsService.deletePhotoById(id);
+        this.albumPhotos = this.albumPhotos.filter(p => p.id != id);
+        Swal.fire(
+          'Imagen borrada!',
+          'Se borro exitosamente',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelado',
+          'Tu imagen esta a salvo!',
+          'error'
+        )
+      }
+    })
+    
+  }
+
+  viewPhoto(photo: AlbumPhoto):void{
+    const modal = this.matDialog.open(ModalComponent, {
+      data: photo
+    });
   }
 
 }

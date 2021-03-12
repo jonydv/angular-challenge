@@ -25,4 +25,8 @@ export class AlbumsService {
   getAlbumPhotosById(id: string): Observable<AlbumPhoto[]>{
     return this.http.get<AlbumPhoto[]>(`${this.baseUrl}/albums/${id}/photos`);
   }
+
+  deletePhotoById(id: number): void{
+    this.http.delete(`${this.baseUrl}/photos/${id}`);
+  }
 }

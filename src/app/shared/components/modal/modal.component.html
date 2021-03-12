@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <h5 class="title text-center">{{ data.title }}</h5>
+  <hr />
+  <img [src]="data.url" [alt]="data.title" class="img-fluid" />
+
+  <div class="mt-3">
+    <button class="btn btn-outline-danger" (click)="close()">Cerrar</button>
+  </div>
+</div>
