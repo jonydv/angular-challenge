@@ -15,13 +15,15 @@ export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   completedFilter: boolean = false;
   order: boolean = false;
+  page: number = 1;
+  userId!: number;
 
   constructor(private todosService: TodosService) { }
 
  
 
   ngOnInit(): void {
-    this.todosService.getTodos(1)
+    this.todosService.getTodos(this.page)
       .subscribe(todos => this.todos = todos);
   }
 
@@ -53,6 +55,16 @@ export class TodoListComponent implements OnInit {
     })
   }
 
+  filterByUserId(): void{
+    if(!this.userId){
+      return;
+    }
+    
+    this.todosService.getTodosFilteredByUserId(this.userId)
+      .subscribe(todos => this.todos = todos);
+
+  }
+
   filterTodosByState():void{
     this.completedFilter= !this.completedFilter;
     this.todosService.getTodosFiltered(1, this.completedFilter)
@@ -67,5 +79,15 @@ export class TodoListComponent implements OnInit {
     .subscribe(todos => this.todos = todos);
   }
 
+  paginationTodos(page: number): void{
+
+    if(this.page === 1 && page === -1 || this.page === 10 && page=== 1){
+      return;
+    }
+    this.page= this.page + page;
+    this.todosService.getTodos(this.page)
+      .subscribe(todos => this.todos = todos);
+
+  }
 
 }

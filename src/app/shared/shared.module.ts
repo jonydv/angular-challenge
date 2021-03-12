@@ -7,13 +7,12 @@ import { TableComponent } from './components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from './components/modal/modal.component';
 import { UserCommentComponent } from './components/user-comment/user-comment.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { CompletedPipe } from './pipes/completed.pipe';
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, TableComponent, ModalComponent, UserCommentComponent, PaginationComponent, CompletedPipe],
+  declarations: [NavbarComponent, FooterComponent, TableComponent, ModalComponent, UserCommentComponent, CompletedPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -26,7 +25,6 @@ import { CompletedPipe } from './pipes/completed.pipe';
     FooterComponent,
     ModalComponent,
     UserCommentComponent,
-    PaginationComponent,
     FormsModule
   ]
 })

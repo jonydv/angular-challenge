@@ -25,6 +25,10 @@ export class TodosService {
     return this.http.get<Todo[]>(`${this.baseUrl}/todos?_sort=id&_order=${asc}&_page=${page}&_limit=20`);
   }
 
+  getTodosFilteredByUserId(id: number): Observable<Todo[]>{
+    return this.http.get<Todo[]>(`${this.baseUrl}/todos?userId=${id}`);
+  }
+
   getTodoById(id: string): Observable<Todo>{
     return this.http.get<Todo>(`${this.baseUrl}/todos/${id}`);
   }

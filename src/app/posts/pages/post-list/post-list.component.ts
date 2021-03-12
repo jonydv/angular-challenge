@@ -13,11 +13,12 @@ export class PostListComponent implements OnInit {
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
   title: string = '';
   userId!: number;
+  page: number = 1;
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    this.postsService.getPosts(1)
+    this.postsService.getPosts(this.page)
       .subscribe(posts => this.posts = posts);
   }
 
@@ -35,5 +36,14 @@ export class PostListComponent implements OnInit {
     this.postsService.getPostsByUserId(this.userId)
       .subscribe(posts => this.posts = posts);
 
+  }
+
+  paginationPost(page: number): void{
+    if(this.page === 1 && page === -1 || this.page === 5 && page=== 1){
+      return;
+    }
+    this.page= this.page + page;
+    this.postsService.getPosts(this.page)
+      .subscribe(posts => this.posts = posts);
   }
 }

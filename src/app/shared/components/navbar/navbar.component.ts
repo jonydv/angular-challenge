@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 interface menuItem{
   text: string;
+  icon?: string;
   route: string;
 }
 
@@ -14,10 +15,10 @@ interface menuItem{
 export class NavbarComponent implements OnInit {
 
   menuItems: menuItem[] = [
-    {text: 'Usuarios', route: '/'},
-    {text: 'Posts', route: '/posts'},
-    {text: 'Albums', route: '/albums'},
-    {text: 'Todos', route:'/todos'}
+    {text: 'Usuarios', icon: 'fas fa-users', route: '/'},
+    {text: 'Posts', icon:'fas fa-clipboard', route: '/posts'},
+    {text: 'Albums', icon: 'fas fa-images', route: '/albums'},
+    {text: 'Todos', icon: 'fas fa-tasks', route:'/todos'}
   ]
   constructor() { }
 

@@ -9,15 +9,27 @@ import { AlbumsService } from '../../services/albums.service';
 })
 export class AlbumListComponent implements OnInit {
 
+  page: number = 1;
+
   albums: Album[] = [];
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
 
   constructor(private albumsService: AlbumsService) { }
 
   ngOnInit(): void {
-    this.albumsService.getAlbums(1)
+    this.albumsService.getAlbums(this.page)
       .subscribe( albums => this.albums = albums);
   }
 
+  paginationAlbum(page: number): void{
+
+    if(this.page === 1 && page === -1 || this.page === 5 && page=== 1){
+      return;
+    }
+    this.page= this.page + page;
+    this.albumsService.getAlbums(this.page)
+      .subscribe( albums => this.albums = albums);
+
+  }
 
 }
