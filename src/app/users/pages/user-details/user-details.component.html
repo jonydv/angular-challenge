@@ -13,12 +13,20 @@
   >
     <i class="far fa-clipboard"></i> Posts
   </button>
-  <a href="#" class="btn btn-outline-warning m-2"
-    ><i class="far fa-eye"></i> Albums</a
+  <button
+    class="btn btn-outline-warning m-2"
+    (click)="getAllUserAlbums(user.id.toString())"
   >
-  <a href="#" class="btn btn-outline-primary m-2"
-    ><i class="far fa-eye"></i> Todos</a
+    <i class="far fa-eye"></i> Albums
+  </button>
+  <button
+    class="btn btn-outline-primary m-2"
+    (click)="getAllUserTodos(user.id.toString())"
   >
+    <i class="far fa-eye"></i> Todos
+  </button>
 
-  <app-table *ngIf="posts" [posts]="posts"></app-table>
+  <app-table *ngIf="posts && showPosts" [posts]="posts"></app-table>
+  <app-table *ngIf="albums && showAlbums" [albums]="albums"></app-table>
+  <app-table *ngIf="todos && showTodos" [todos]="todos"></app-table>
 </ng-template>

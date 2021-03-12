@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { AlbumsService } from '../../services/albums.service';
+import { AlbumPhoto } from '../../interfaces/albumPhoto.interface';
 
 @Component({
   selector: 'app-album-details',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumDetailsComponent implements OnInit {
 
-  constructor() { }
+  albumPhotos: AlbumPhoto[] = [];
+  constructor(private albumsService: AlbumsService,
+              private activatedRoutes: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoutes.params
+      .pipe(
+        switchMap(({id}) => this.albumsService.getAlbumPhotosById(id))
+      )
+      .subscribe(albumPhotos => this.albumPhotos = albumPhotos)
+  }
+
+  deletePhoto(id: number):void{
+    this.albumPhotos = this.albumPhotos.filter(p => p.id != id);
   }
 
 }

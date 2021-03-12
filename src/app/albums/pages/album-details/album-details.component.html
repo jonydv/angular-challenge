@@ -1,1 +1,18 @@
-<p>album-details works!</p>
+<div class="row row-cols-3 m-3">
+  <div class="card m-4" style="width: 15rem" *ngFor="let photo of albumPhotos">
+    <img [src]="photo.thumbnailUrl" class="card-img-top" [alt]="photo.title" />
+    <div class="card-body">
+      <p class="card-text">{{ photo.title }}</p>
+
+      <button
+        class="btn btn-outline-danger m-1"
+        (click)="deletePhoto(photo.id)"
+      >
+        <i class="far fa-trash"></i> Borrar
+      </button>
+      <button class="btn btn-outline-info">
+        <i class="far fa-eye"></i> Ver
+      </button>
+    </div>
+  </div>
+</div>

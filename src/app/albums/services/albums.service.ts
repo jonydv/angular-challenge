@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Album } from '../interfaces/albums.interface';
+import { AlbumPhoto } from '../interfaces/albumPhoto.interface';
 
 
 @Injectable({
@@ -19,5 +20,9 @@ export class AlbumsService {
 
   getAlbumById(id: string): Observable<Album>{
     return this.http.get<Album>(`${this.baseUrl}/albums/${id}`);
+  }
+
+  getAlbumPhotosById(id: string): Observable<AlbumPhoto[]>{
+    return this.http.get<AlbumPhoto[]>(`${this.baseUrl}/albums/${id}/photos`);
   }
 }

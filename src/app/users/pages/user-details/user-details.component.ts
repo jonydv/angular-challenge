@@ -18,7 +18,10 @@ export class UserDetailsComponent implements OnInit {
   posts!: Post[];
   albums!: Album[];
   todos!:Todo[];
-  
+  showPosts: boolean = false;
+  showAlbums: boolean = false;
+  showTodos: boolean = false;
+
   tableHeads: string[]= ['Id', 'UserId', 'Title', 'Ver'];
 
   constructor(private usersService: UsersService,
@@ -41,7 +44,25 @@ export class UserDetailsComponent implements OnInit {
     
    this.usersService.getUserPosts(id)
       .subscribe(posts => this.posts = posts);
-         
+    
+      this.showPosts= !this.showPosts;
   }
+
+  getAllUserAlbums (id: string):void{
+    
+    this.usersService.getUserAlbums(id)
+       .subscribe(albums => this.albums = albums);
+    
+       this.showAlbums= !this.showAlbums;
+          
+   }
+
+   getAllUserTodos(id: string):void{
+    
+    this.usersService.getUserTodos(id)
+       .subscribe(todos => this.todos = todos);
+          
+       this.showTodos= !this.showTodos;
+   }
 
 }

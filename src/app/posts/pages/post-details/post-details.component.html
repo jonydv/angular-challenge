@@ -2,17 +2,14 @@
   <div class="card" *ngIf="post">
     <div class="card-body">
       <h5 class="card-title">Post</h5>
-      <h6 class="card-subtitle mb-2 text-muted">
+      <h5 class="card-title mb-2 text-muted">
         {{ post.title | titlecase }}
-      </h6>
+      </h5>
       <p class="card-text">{{ post.body }}</p>
       <button class="btn btn-outline-info m-2" (click)="setShowUser()">
         <i class="far fa-user"></i> Usuario
       </button>
       <button class="btn btn-outline-warning m-2">
-        <i class="far fa-images"></i> Albums
-      </button>
-      <button class="btn btn-outline-primary m-2">
         <i class="far fa-comments"></i> Comentarios
       </button>
     </div>
