@@ -8,10 +8,7 @@ const routes: Routes = [
     path: '',
     component: TodoListComponent
   },
-  {
-    path: ':id',
-    component: TodoDetailsComponent
-  }
+
 ];
 
 @NgModule({

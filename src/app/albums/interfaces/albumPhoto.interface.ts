@@ -1,3 +1,4 @@
+
 export interface AlbumPhoto {
     albumId:      number;
     id:           number;

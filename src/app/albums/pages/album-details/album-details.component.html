@@ -1,4 +1,23 @@
-<div class="row row-cols-3 m-3">
+<div class="container-fluid mt-4">
+  <div class="card" *ngIf="album">
+    <div class="card-body">
+      <h5 class="card-title">Album</h5>
+      <h5 class="card-title mb-2 text-muted">
+        {{ album.title | titlecase }}
+      </h5>
+      <h6 class="card-text">Id: {{ album.id }}</h6>
+      <button class="btn btn-outline-info m-2" (click)="setShowUser()">
+        <i class="far fa-user"></i> Usuario
+      </button>
+      <button class="btn btn-outline-warning m-2" (click)="setShowGallery()">
+        <i class="far fa-images"></i> Galeria
+      </button>
+    </div>
+  </div>
+  <app-user-card [user]="album.user" *ngIf="showUser"></app-user-card>
+</div>
+
+<div class="row row-cols-3 m-3" *ngIf="showGallery">
   <div class="card m-4" style="width: 15rem" *ngFor="let photo of albumPhotos">
     <img
       [src]="photo.thumbnailUrl"

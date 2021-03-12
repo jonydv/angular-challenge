@@ -13,7 +13,7 @@ export class PostsService {
   constructor(private http: HttpClient) { }
 
   getPosts(page: number): Observable<Post[]>{
-    return this.http.get<Post[]>(`${this.baseUrl}/posts?_page=${page}`);
+    return this.http.get<Post[]>(`${this.baseUrl}/posts?_page=${page}&_limit=20`);
   }
 
   getPostById(id: string): Observable<Post>{

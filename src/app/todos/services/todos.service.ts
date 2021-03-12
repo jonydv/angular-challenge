@@ -14,10 +14,14 @@ export class TodosService {
   constructor(private http: HttpClient) { }
 
   getTodos(page: number): Observable<Todo[]>{
-    return this.http.get<Todo[]>(`${this.baseUrl}/todos?_page=${page}`);
+    return this.http.get<Todo[]>(`${this.baseUrl}/todos?_page=${page}&_limit=20`);
   }
 
   getTodoById(id: string): Observable<Todo>{
     return this.http.get<Todo>(`${this.baseUrl}/todos/${id}`);
+  }
+
+  updateTodoById(todo: Todo): Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}/todos/${todo.id}`, todo);
   }
 }

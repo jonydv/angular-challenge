@@ -7,20 +7,27 @@ import { HomeComponent } from './pages/home/home.component';
 import { TableComponent } from './components/table/table.component';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from './components/modal/modal.component';
+import { UserCommentComponent } from './components/user-comment/user-comment.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
+import { CompletedPipe } from './pipes/completed.pipe';
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, HomeComponent, TableComponent, ModalComponent],
+  declarations: [NavbarComponent, FooterComponent, HomeComponent, TableComponent, ModalComponent, UserCommentComponent, PaginationComponent, CompletedPipe],
   imports: [
     CommonModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   exports: [
     TableComponent,
     NavbarComponent,
     FooterComponent,
-    ModalComponent
+    ModalComponent,
+    UserCommentComponent,
+    PaginationComponent
   ]
 })
 export class SharedModule { }
